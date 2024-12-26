@@ -17,6 +17,12 @@ def target
                  name: 'GENERATE_REPORT'
     }
     stages {
+        stage('Clone sources') {
+            steps {
+                git branch: 'main', url: 'https://github.com/globalhitss-devops/juice-shop.git'
+            }
+        }
+     
         stage('Pipeline Info') {
             steps {
                 script {
@@ -94,6 +100,7 @@ def target
                 }
             }
         }
+     
         stage('Copy Report to Workspace') {
             steps {
                 script {
@@ -103,6 +110,7 @@ def target
                 }
             }
         }
+     
         stage('Email Report'){
             steps{
                 emailext (
