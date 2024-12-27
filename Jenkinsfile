@@ -45,10 +45,10 @@ def target
         stage('Setting up OWASP ZAP docker container') {
             steps {
                 echo 'Pulling up last OWASP ZAP container --> Start'
-                sh 'docker pull owasp/zap2docker-stable:latest'
+                sh 'docker pull ghcr.io/zaproxy/zaproxy:latest'
                 echo 'Pulling up last VMS container --> End'
                 echo 'Starting container --> Start'
-                sh 'docker run -dt --name owasp owasp/zap2docker-stable /bin/bash '
+                sh 'docker run -dt --name owasp ghcr.io/zaproxy/zaproxy /bin/bash '
             }
         }
 
