@@ -124,7 +124,7 @@ def target
                 body: "Please find the attached report for the latest OWASP ZAP Scan.",
                 recipientProviders: [buildUser()],
                 subject: "OWASP ZAP Report",
-                to: 'abc@example.com'
+                to: 'claudio.bianco.3@globalhitss.com.br'
                 )
             }
         }
