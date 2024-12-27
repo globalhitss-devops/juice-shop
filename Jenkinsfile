@@ -120,7 +120,8 @@ def target
             steps{
                 emailext (
                 attachLog: true,
-                attachmentsPattern: '**/*.html',
+                // attachmentsPattern: '**/*.html',
+                attachmentsPattern: '**/report.html',
                 body: "Please find the attached report for the latest OWASP ZAP Scan.",
                 recipientProviders: [buildUser()],
                 subject: "OWASP ZAP Report",
