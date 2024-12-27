@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('Clone sources') {
             steps {
-                git branch: 'main', credentialsId: 'github-global', url: 'https://github.com/globalhitss-devops/juice-shop.git'
+                git branch: 'master', credentialsId: 'github-global', url: 'https://github.com/globalhitss-devops/juice-shop.git'
             }
         }    
         
