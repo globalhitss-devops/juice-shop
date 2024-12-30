@@ -77,7 +77,7 @@ def target
                              docker exec owasp \
                              zap-baseline.py \
                              -t $target \
-                             -r report.html \
+                             -x report.xml \
                              -I
                          """
                     }
@@ -86,7 +86,7 @@ def target
                              docker exec owasp \
                              zap-api-scan.py \
                              -t $target \
-                             -r report.html \
+                             -x report.xml \
                              -I
                          """
                      }
@@ -95,7 +95,7 @@ def target
                              docker exec owasp \
                              zap-full-scan.py \
                              -t $target \
-                             -r report.html \
+                             -x report.xml \
                              -I
                          """
                      }
@@ -110,7 +110,7 @@ def target
             steps {
                 script {
                     sh '''
-                         docker cp owasp:/zap/wrk/report.html ${WORKSPACE}/report.html
+                         docker cp owasp:/zap/wrk/report.xml ${WORKSPACE}/report.xml
                      '''
                 }
             }
@@ -121,7 +121,7 @@ def target
                 emailext (
                 attachLog: true,
                 // attachmentsPattern: '**/*.html',
-                attachmentsPattern: '**/report.html',
+                attachmentsPattern: '**/report.xml',
                 body: "Please find the attached report for the latest OWASP ZAP Scan.",
                 recipientProviders: [buildUser()],
                 subject: "OWASP ZAP Report",
