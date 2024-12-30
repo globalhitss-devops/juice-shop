@@ -13,7 +13,7 @@ def target
                  description: 'Type of scan that is going to perform inside the container',
                  name: 'SCAN_TYPE'
 
-        string defaultValue: 'https://juice-shop.herokuapp.com/',
+        string defaultValue: 'https://juice-shop.herokuapp.com',
                  description: 'Target URL to scan',
                  name: 'TARGET'
 
@@ -48,7 +48,7 @@ def target
                 sh 'docker pull ghcr.io/zaproxy/zaproxy:stable'
                 echo 'Pulling up last VMS container --> End'
                 echo 'Starting container --> Start'
-                sh 'docker run -dt --name owasp ghcr.io/zaproxy/zaproxy /bin/bash '
+                sh 'docker run -dt --name owasp ghcr.io/zaproxy/zaproxy:stable /bin/bash '
             }
         }
 
