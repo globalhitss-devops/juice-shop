@@ -44,7 +44,8 @@ def target
                     sh """python3 --version /
                     pwd /
                     ls -lha /
-                    cd /var/lib/jenkins/workspace/juice-shop/devops/scripts-cicd/defect-dojo /
+                    echo ${env.WORKSPACE} /
+                    cd ${env.WORKSPACE}/devops/scripts-cicd/defect-dojo /
                     ls -lha /
                     python3 test.py"""
                 }
