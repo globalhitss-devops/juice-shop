@@ -28,6 +28,12 @@ def target
             }
         }
 
+        stage('Clone scripts CI/CD') {
+            steps {
+                git branch: 'main', credentialsId: 'github-global', url: 'https://github.com/globalhitss-devops/scripts-cicd.git'
+            }
+        }
+     
         stage('Pipeline Info') {
             steps {
                 script {
