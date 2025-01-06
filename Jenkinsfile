@@ -47,6 +47,11 @@ def target
                         sh "cd ./defect-dojo && ls -lha"
                         sh "cd ./defect-dojo && python3 test.py"
                     }
+
+                    dir("${env.WORKSPACE}/devops/defect-dojo"){
+                        sh "pwd"
+                        sh "ls -lha"
+                    }
                 }
             }
         }
