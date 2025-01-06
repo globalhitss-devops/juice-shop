@@ -46,7 +46,7 @@ def target
                         pwd /
                         ls -lha"""
 
-                        sh "cd /scripts-cicd/defect-dojo/ && python3 test.py"
+                        sh "cd /scripts-cicd/defect-dojo/ && ls -lha"
                     }
                  
                     sh """python3 --version /
