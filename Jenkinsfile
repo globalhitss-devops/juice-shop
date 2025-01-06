@@ -41,16 +41,10 @@ def target
                 script {
                     // sh "python3 upload-reports-trivy.py trivy-fs_report.json"
 
-                   dir("devops") {
-                        sh """python3 --version /
-                        ls -lha"""
-                        sh "cd ./defect-dojo && ls -lha"
-                        sh "cd ./defect-dojo && python3 test.py"
-                    }
-
                     dir("${env.WORKSPACE}/devops/defect-dojo"){
                         sh "pwd"
                         sh "ls -lha"
+                        sh "python3 test.py"
                     }
                 }
             }
