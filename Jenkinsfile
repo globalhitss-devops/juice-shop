@@ -52,7 +52,7 @@ def target
                     sh """python3 --version /
                     pwd /
                     ls -lha /
-                    echo ${env.WORKSPACE}"""
+                    ls ${env.WORKSPACE}/devops/defect-dojo"""
                 }
             }
         }
