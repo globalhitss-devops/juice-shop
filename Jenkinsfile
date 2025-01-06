@@ -47,6 +47,8 @@ def target
                         ls -lha"""
 
                         sh "cd ./defect-dojo && ls -lha"
+
+                        sh "cd ./defect-dojo && python3 test.py"
                     }
                  
                     sh """python3 --version /
