@@ -45,15 +45,14 @@ def target
                         sh """python3 --version /
                         pwd /
                         ls -lha"""
+
+                        sh "cd /scripts-cicd/defect-dojo/ && python3 test.py"
                     }
                  
                     sh """python3 --version /
                     pwd /
                     ls -lha /
-                    echo ${env.WORKSPACE} /
-                    cd ${env.WORKSPACE}/devops/scripts-cicd/defect-dojo /
-                    ls -lha /
-                    python3 test.py"""
+                    echo ${env.WORKSPACE}"""
                 }
             }
         }
