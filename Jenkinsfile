@@ -46,7 +46,7 @@ def target
                         pwd /
                         ls -lha"""
 
-                        sh "cd /defect-dojo/ && ls -lha"
+                        sh "cd ./defect-dojo && ls -lha"
                     }
                  
                     sh """python3 --version /
