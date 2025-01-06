@@ -30,7 +30,24 @@ def target
 
         stage('Clone scripts CI/CD') {
             steps {
-                git branch: 'main', credentialsId: 'github-global', url: 'https://github.com/globalhitss-devops/scripts-cicd.git'
+                dir("devops") {
+                     git branch: 'main', credentialsId: 'github-global', url: 'https://github.com/globalhitss-devops/scripts-cicd.git'
+                 }
+            }
+        }
+
+        stage ("Test scripts CI/CD") {
+            steps {
+                script {
+                    // sh "python3 upload-reports-trivy.py trivy-fs_report.json"
+                    
+                    sh """python3 --version /
+                    pwd /
+                    ls -lha /
+                    cd ./devops/scripts-cicd/defect-dojo /
+                    ls -lha /
+                    python3 test.py"""
+                }
             }
         }
      
