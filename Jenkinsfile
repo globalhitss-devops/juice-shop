@@ -43,18 +43,10 @@ def target
 
                    dir("devops") {
                         sh """python3 --version /
-                        pwd /
                         ls -lha"""
-
                         sh "cd ./defect-dojo && ls -lha"
-
                         sh "cd ./defect-dojo && python3 test.py"
                     }
-                 
-                    sh """python3 --version /
-                    pwd /
-                    ls -lha /
-                    ls ${env.WORKSPACE}/devops/defect-dojo"""
                 }
             }
         }
