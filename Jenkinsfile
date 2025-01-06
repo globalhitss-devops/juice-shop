@@ -40,7 +40,13 @@ def target
             steps {
                 script {
                     // sh "python3 upload-reports-trivy.py trivy-fs_report.json"
-                    
+
+                   dir("devops") {
+                        sh """python3 --version /
+                        pwd /
+                        ls -lha"""
+                    }
+                 
                     sh """python3 --version /
                     pwd /
                     ls -lha /
