@@ -101,14 +101,9 @@ def target
 //            }
 //        }
 
-        stage ('OWASP Dependency-Check') {
-            steps {
-                dependencyCheck additionalArguments: ''' 
-                    -o "./" 
-                    -s "./"
-                    -f "ALL" 
-                    --prettyPrint''', odcInstallation: 'OWASP'
-
+        stage("OWASP Dependency-Check"){
+            steps{
+                dependencyCheck additionalArguments: '--project WORKSPACE', odcInstallation: 'OWASP'
                 dependencyCheckPublisher pattern: 'dependency-check-report.xml'
             }
         }
