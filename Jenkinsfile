@@ -105,7 +105,7 @@ def target
 
         stage("OWASP Dependency-Check") {
             steps {
-                dependencyCheck additionalArguments: '--format HTML --format XML', odcInstallation: 'OWASP'
+                dependencyCheck additionalArguments: '--scan /frontend/src --format HTML --format XML', odcInstallation: 'OWASP'
                 dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
             }
         }
