@@ -232,10 +232,9 @@ def target
                         //      -I
                         //  """
                         sh """
-                            docker run --network="host" -t owasp \
+                            docker exec owasp \
                                 zap-full-scan.py \
                                 -t $target \
-                                -g gen.conf \
                                 -x report.xml \
                                 -r full-report.html \
                                 -z "-config auth.loginurl=https://juice-shop.herokuapp.com/login \
