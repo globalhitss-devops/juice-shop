@@ -232,7 +232,7 @@ def target
                         //      -I
                         //  """
                         sh """
-                            docker exec owasp \
+                                docker exec owasp \
                                 zap-full-scan.py \
                                 -t $target \
                                 -x report.xml \
