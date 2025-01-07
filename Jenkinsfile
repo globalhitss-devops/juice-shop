@@ -144,11 +144,13 @@ def target
         stage ("Import OWASP ZAP Defect DOJO") {
             steps {
                 script {
-                    sh "python3 upload-reports-owasp-zap.py report.xml"
-                    
-                    sh """python3 --version /
-                    pwd /
-                    ls -lha"""
+                    dir("${env.WORKSPACE}/devops/defect-dojo"){
+                        sh "python3 upload-reports-owasp-zap.py report.xml"
+                        
+                        sh """python3 --version /
+                        pwd /
+                        ls -lha"""
+                    }
                 }
             }
         }
