@@ -43,7 +43,6 @@ def target
                 script {
                     sh """ls ${env.WORKSPACE}"""
                     sh '''
-                        cd ${env.WORKSPACE} /
                         npm install
                      ''' 
                 }
