@@ -101,10 +101,15 @@ def target
 //            }
 //        }
 
-        stage("OWASP Dependency-Check") {
+        stage ('OWASP Dependency-Check') {
             steps {
-                dependencyCheck additionalArguments: '--scan ./frontend/src --format HTML --format XML', odcInstallation: 'OWASP'
-                dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
+                dependencyCheck additionalArguments: ''' 
+                    -o "./" 
+                    -s "./"
+                    -f "ALL" 
+                    --prettyPrint''', odcInstallation: 'OWASP'
+
+                dependencyCheckPublisher pattern: 'dependency-check-report.xml'
             }
         }
 
