@@ -41,6 +41,7 @@ def target
         stage("npm install") {
             steps {
                 script {
+                    echo "Teste ${env.SONAR_SERVER} Sonnar!"
                     sh """ls ${env.WORKSPACE}"""
                     sh '''
                         npm install
