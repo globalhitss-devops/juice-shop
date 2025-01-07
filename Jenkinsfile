@@ -101,10 +101,12 @@ def target
 //            }
 //        }
 
-        stage("OWASP Dependency-Check"){
-            steps{
+        stage('OWASP Dependency-Check') {
+            steps {
+                // Invoke OWASP Dependency-Check
+                // Ensure that OWASP Dependency-Check is available in the system PATH
                 dependencyCheck additionalArguments: '--project WORKSPACE', odcInstallation: 'OWASP'
-                dependencyCheckPublisher pattern: 'dependency-check-report.xml'
+                dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
             }
         }
 
