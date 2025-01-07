@@ -38,13 +38,13 @@ def target
             }
         }
 
-        stage ("npm install") {
+        stage("npm install") {
             steps {
                 script {
+                    sh """ls ${env.WORKSPACE}"""
                     sh '''
                         cd ${env.WORKSPACE} && npm install
                      ''' 
-                    sh """ls ${env.WORKSPACE}"""
                 }
             }
         }
