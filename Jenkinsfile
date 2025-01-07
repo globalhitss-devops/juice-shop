@@ -144,6 +144,9 @@ def target
         stage ("Import OWASP ZAP Defect DOJO") {
             steps {
                 script {
+                    sh '''
+                        cp ${WORKSPACE}/report.xml ${WORKSPACE}/devops/defect-dojo/report.xml
+                     ''' 
                     dir("${env.WORKSPACE}/devops/defect-dojo"){
                         sh "python3 upload-reports-owasp-zap.py report.xml"
                         
