@@ -46,8 +46,8 @@ def target
             steps{
                withSonarQubeEnv("SonarQube"){
                    sh '''$SCANNER_HOME/bin/sonar-scanner \
-                   -Dsonar.projectName=global-lakeit \
-                   -Dsonar.projectKey=global-lakeit \
+                   -Dsonar.projectName=juice-shop \
+                   -Dsonar.projectKey=juice-shop \
                    -Dsonar.sources=. \
                    -Dsonar.language=ts \
                    -Dsonar.sourceEncoding=UTF-8 \
@@ -63,7 +63,7 @@ def target
                 script {
                     def sonarServer = 'http://52.200.180.65:9000'
                     def sonarReportData = sh (
-                    script: "curl -s -u ${SONAR_TOKEN}: ${sonarServer}/api/issues/search?componentKeys=global-lakeit",
+                    script: "curl -s -u ${SONAR_TOKEN}: ${sonarServer}/api/issues/search?componentKeys=juice-shop",
                     returnStdout: true
                     ).trim()
                     writeFile file: 'sonarqube-report.json', text: sonarReportData
