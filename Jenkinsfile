@@ -237,7 +237,6 @@ def target
                                 -t $target \
                                 -g gen.conf \
                                 -x report.xml \
-                                -r full-report.html \
                                 -z "-config auth.loginurl=https://juice-shop.herokuapp.com/login \
                                     -config auth.username=pipeline@globalhitss.com.br \
                                     -config auth.password=Senha@12345 \
