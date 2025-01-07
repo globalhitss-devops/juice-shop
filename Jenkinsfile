@@ -100,7 +100,7 @@ def target
                              zap-baseline.py \
                              -t $target \
                              -g gen.conf \
-                             -r report.html \
+                             -r report.xml \
                              -I
                          """
                     }
@@ -109,7 +109,7 @@ def target
                              docker exec owasp \
                              zap-api-scan.py \
                              -t $target \
-                             -r report.html \
+                             -r report.xml \
                              -f openapi \
                              -I
                          """
@@ -120,7 +120,7 @@ def target
                              zap-full-scan.py \
                              -t $target \
                              -g gen.conf \
-                             -r report.html \
+                             -r report.xml \
                              -I
                          """
                      }
@@ -135,18 +135,30 @@ def target
             steps {
                 script {
                     sh '''
-                         docker cp owasp:/zap/wrk/report.html ${WORKSPACE}/report.html
+                         docker cp owasp:/zap/wrk/report.xml ${WORKSPACE}/report.xml
                      '''
                 }
             }
         }
 
+        stage ("Import OWASP ZAP Defect DOJO") {
+            steps {
+                script {
+                    sh "python3 upload-reports-owasp-zap.py report.xml"
+                    
+                    sh """python3 --version /
+                    pwd /
+                    ls -lha"""
+                }
+            }
+        }
+     
         stage('Email Report'){
             steps{
                 emailext (
                 attachLog: true,
                 // attachmentsPattern: '**/*.html',
-                attachmentsPattern: '**/report.html',
+                attachmentsPattern: '**/report.xml',
                 body: "Please find the attached report for the latest OWASP ZAP Scan.",
                 recipientProviders: [buildUser()],
                 subject: "OWASP ZAP Report",
