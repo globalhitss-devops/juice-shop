@@ -38,6 +38,17 @@ def target
             }
         }
 
+        stage ("npm install") {
+            steps {
+                script {
+                    sh '''
+                        cd ${env.WORKSPACE} && npm install
+                     ''' 
+                    sh """ls ${env.WORKSPACE}"""
+                }
+            }
+        }
+     
         stage("SonarQube Analysis"){
             environment {
                 SCANNER_HOME = tool 'SonarQubeScanner';    
