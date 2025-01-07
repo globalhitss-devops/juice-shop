@@ -100,7 +100,7 @@ def target
                              zap-baseline.py \
                              -t $target \
                              -g gen.conf \
-                             -r report.xml \
+                             -x report.xml \
                              -I
                          """
                     }
@@ -109,7 +109,7 @@ def target
                              docker exec owasp \
                              zap-api-scan.py \
                              -t $target \
-                             -r report.xml \
+                             -x report.xml \
                              -f openapi \
                              -I
                          """
@@ -120,7 +120,7 @@ def target
                              zap-full-scan.py \
                              -t $target \
                              -g gen.conf \
-                             -r report.xml \
+                             -x report.xml \
                              -I
                          """
                      }
