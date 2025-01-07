@@ -96,12 +96,24 @@ def target
             }
         }
         
-        stage("OWASP Dependency-Check"){
-            steps{
-                dependencyCheck additionalArguments: '--scan ./', odcInstallation: 'OWASP'
-                dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
+//        stage("OWASP Dependency-Check"){
+//            steps{
+//                dependencyCheck additionalArguments: '--scan ./', odcInstallation: 'OWASP'
+//                dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
+//            }
+//        }
+
+        stage('OWASP Dependency-Check') {
+              steps {
+                dependencyCheck additionalArguments: ''' 
+                            -o './'
+                            -s './'
+                            -f 'ALL' 
+                            --prettyPrint''', odcInstallation: 'OWASP'
+                
+                dependencyCheckPublisher pattern: 'dependency-check-report.xml'
             }
-        }
+        } 
 
         stage ("Import OWASP Defect DOJO") {
             steps {
