@@ -103,17 +103,12 @@ def target
 //            }
 //        }
 
-        stage('OWASP Dependency-Check') {
-              steps {
-                dependencyCheck additionalArguments: ''' 
-                            -o './'
-                            -s './'
-                            -f 'ALL' 
-                            --prettyPrint''', odcInstallation: 'OWASP'
-                
-                dependencyCheckPublisher pattern: 'dependency-check-report.xml'
+        stage("OWASP Dependency-Check") {
+            steps {
+                dependencyCheck additionalArguments: '--format HTML --format XML', odcInstallation: 'OWASP'
+                dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
             }
-        } 
+        }
 
         stage ("Import OWASP Defect DOJO") {
             steps {
