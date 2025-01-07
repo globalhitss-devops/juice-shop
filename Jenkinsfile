@@ -74,15 +74,13 @@ def target
         stage ("Import Sonarqube Defect DOJO") {
             steps {
                 script {
+                    sh """ls ${env.WORKSPACE} /
+                          cat ${WORKSPACE}/sonarqube-report.json"""
                     sh '''
                         cp ${WORKSPACE}/sonarqube-report.json ${WORKSPACE}/devops/defect-dojo/sonarqube-report.json
                      ''' 
                     dir("${env.WORKSPACE}/devops/defect-dojo"){
                         sh "python3 upload-reports-sonarqube.py sonarqube-report.json"
-                        
-                        sh """python3 --version /
-                        pwd /
-                        ls -lha"""
                     }
                 }
             }
@@ -113,15 +111,13 @@ def target
         stage ("Import OWASP Defect DOJO") {
             steps {
                 script {
+                    sh """ls ${env.WORKSPACE} /
+                          cat ${WORKSPACE}/dependency-check-report.xml"""
                     sh '''
                         cp ${WORKSPACE}/dependency-check-report.xml ${WORKSPACE}/devops/defect-dojo/dependency-check-report.xml
                      ''' 
                     dir("${env.WORKSPACE}/devops/defect-dojo"){
-                        sh "python3 upload-reports-dependency-check.py dependency-check-report.xml"
-                        
-                        sh """python3 --version /
-                        pwd /
-                        ls -lha"""
+                        sh "python3 upload-reports-dependency-check.py dependency-check-report.xml"              
                     }
                 }
             }
@@ -136,15 +132,13 @@ def target
         stage ("Import TRIVY Defect DOJO") {
             steps {
                 script {
+                    sh """ls ${env.WORKSPACE} /
+                          cat ${WORKSPACE}/trivy-fs_report.json"""
                     sh '''
                         cp ${WORKSPACE}/trivy-fs_report.json ${WORKSPACE}/devops/defect-dojo/trivy-fs_report.json
                      ''' 
                     dir("${env.WORKSPACE}/devops/defect-dojo"){
                         sh "python3 upload-reports-trivy.py trivy-fs_report.json"
-                        
-                        sh """python3 --version /
-                        pwd /
-                        ls -lha"""
                     }
                 }
             }
@@ -244,15 +238,13 @@ def target
         stage ("Import OWASP ZAP Defect DOJO") {
             steps {
                 script {
+                    sh """ls ${env.WORKSPACE} /
+                          cat ${WORKSPACE}/report.xml"""  
                     sh '''
                         cp ${WORKSPACE}/report.xml ${WORKSPACE}/devops/defect-dojo/report.xml
                      ''' 
                     dir("${env.WORKSPACE}/devops/defect-dojo"){
                         sh "python3 upload-reports-owasp-zap.py report.xml"
-                        
-                        sh """python3 --version /
-                        pwd /
-                        ls -lha"""
                     }
                 }
             }
