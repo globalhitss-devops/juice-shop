@@ -300,19 +300,19 @@ def target
             }
         }
      
-        stage('Email Report'){
-            steps{
-                emailext (
-                attachLog: true,
-                // attachmentsPattern: '**/*.html',
-                attachmentsPattern: '**/report.xml',
-                body: "Please find the attached report for the latest OWASP ZAP Scan.",
-                recipientProviders: [buildUser()],
-                subject: "OWASP ZAP Report",
-                to: 'claudio.bianco.3@globalhitss.com.br'
-                )
-            }
-        }
+        // stage('Email Report'){
+        //     steps{
+        //         emailext (
+        //         attachLog: true,
+        //         // attachmentsPattern: '**/*.html',
+        //         attachmentsPattern: '**/report.xml',
+        //         body: "Please find the attached report for the latest OWASP ZAP Scan.",
+        //         recipientProviders: [buildUser()],
+        //         subject: "OWASP ZAP Report",
+        //         to: 'claudio.bianco.3@globalhitss.com.br'
+        //         )
+        //     }
+        // }
     }
     post {
         always {
