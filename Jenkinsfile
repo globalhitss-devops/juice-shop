@@ -73,7 +73,7 @@ def target
         stage('SonarQube Report Export') {
             steps {
                 script {
-                    def sonarServer = ${env.SONAR_SERVER}
+                    def sonarServer = ${SONAR_SERVER}
                     def sonarReportData = sh (
                     script: "curl -s -u ${SONAR_TOKEN}: ${sonarServer}/api/issues/search?componentKeys=juice-shop",
                     returnStdout: true
