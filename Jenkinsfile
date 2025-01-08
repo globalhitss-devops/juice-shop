@@ -139,7 +139,9 @@ def target
 
         stage("TRIVY Scan") {            
             steps {                
-                sh "trivy fs -f json . > trivy-fs_report.json"
+                // sh "trivy fs -f json . > trivy-fs_report.json"
+                sh "docker pull bkimminich/juice-shop"
+                sh "trivy image -f json -o trivy-fs_report.json bkimminich/juice-shop"
             }        
         }
 
