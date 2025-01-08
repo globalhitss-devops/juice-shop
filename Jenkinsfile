@@ -203,23 +203,47 @@ def target
                     echo "----> scan_type: $scan_type"
                     target = "${params.TARGET}"
                     if (scan_type == 'Baseline') {
+                        // sh """
+                        //      docker exec owasp \
+                        //      zap-baseline.py \
+                        //      -t $target \
+                        //      -g gen.conf \
+                        //      -x report.xml \
+                        //      -I
+                        //  """
                         sh """
-                             docker exec owasp \
-                             zap-baseline.py \
-                             -t $target \
-                             -g gen.conf \
-                             -x report.xml \
-                             -I
+                                docker exec owasp \
+                                zap-baseline.py \
+                                -t $target \
+                                -g gen.conf \
+                                -x report.xml \
+                                -z "-config auth.loginurl=https://juice-shop.herokuapp.com/login \
+                                    -config auth.username=pipeline@globalhitss.com.br \
+                                    -config auth.password=Senha@12345 \
+                                    -config auth.auto=true" \
+                                -I
                          """
                     }
                      else if (scan_type == 'APIS') {
+                        // sh """
+                        //      docker exec owasp \
+                        //      zap-api-scan.py \
+                        //      -t $target \
+                        //      -x report.xml \
+                        //      -f openapi \
+                        //      -I
+                        //  """
                         sh """
-                             docker exec owasp \
-                             zap-api-scan.py \
-                             -t $target \
-                             -x report.xml \
-                             -f openapi \
-                             -I
+                                docker exec owasp \
+                                zap-api-scan.py \
+                                -t $target \
+                                -g gen.conf \
+                                -x report.xml \
+                                -z "-config auth.loginurl=https://juice-shop.herokuapp.com/login \
+                                    -config auth.username=pipeline@globalhitss.com.br \
+                                    -config auth.password=Senha@12345 \
+                                    -config auth.auto=true" \
+                                -I
                          """
                      }
                      else if (scan_type == 'Full') {
